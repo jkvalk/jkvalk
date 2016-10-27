@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+
+  <script language="Javascript">
+    function calc(){
+      var E = parseFloat(document.getElementById("hind_lamp").value);
+      var P = parseFloat(document.getElementById("power").value)*0.825;
+      var C = parseFloat(document.getElementById("hind_kwh").value);
+      var U = parseFloat(document.getElementById("usage_day").value);
+
+      var tasuvus_h = Math.round(E / ((P/1000) * C));
+      var tasuvus_d = Math.round(tasuvus_h / U);
+      var tasuvus_y = (Math.round((tasuvus_d / 365)*10))/10;
+
+      var kasu_day = E/tasuvus_d;
+      var burger = 1.2;
+      var days_burger = Math.round(burger/kasu_day);
+
+      document.getElementById("vastus").value = tasuvus_h;
+      document.getElementById("even_day").value = tasuvus_d;
+      document.getElementById("even_year").value = tasuvus_y;
+      document.getElementById("even_burger_d").value = days_burger;
+      document.getElementById("even_burger_y").value = (Math.round((days_burger/365)*10))/10;
+    }
+  </script>
+
+</head>
+  <body>
+  
+    <form>
+
+      <table border="1">
+        <tr><td>Säästulambi hind (EUR):</td><td><input type="text" id="hind_lamp" value="7.5"></td><tr>
+        <tr><td>Soovitud <b>hõõglambi</b> võimsus (W):</td><td><input type="text" id="power" value ="40"></td><tr>
+        <tr><td>kW/h hind (EUR):</td><td><input type="text" id="hind_kwh" value = "0.12"></td><tr>
+        <tr><td>Keskmine kasutus päevas (h):</td><td><input type="text" id="usage_day" value = "1"></td><tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><tr>
+          
+        <tr><td>TASUVUSAEG (h):</td><td><input type="text" id="vastus" readonly></td><tr>
+        <tr><td>Nulli jõudmise aeg (päeva):</td><td><input type="text" id="even_day" readonly></td><tr>
+        <tr><td>Nulli jõudmise aeg (aastat):</td><td><input type="text" id="even_year" readonly></td><tr>
+        <tr><td>Ühe liitri bensiini<br>teenimiseks kulub (päeva):</td><td><input type="text" id="even_burger_d" readonly></td><tr>
+        <tr><td>Ühe liitri bensiini<br>teenimiseks kulub (aastat):</td><td><input type="text" id="even_burger_y" readonly></td><tr>
+      </table>
+      <br><br>
+
+      <table border="1">
+        <tr><td><input type="Button" value="ARVUTA" onClick="calc()"></td></tr>
+      </table>
+
+    </form>
+
+  </body>
+</html>
+
