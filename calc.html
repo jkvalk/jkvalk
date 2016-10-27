@@ -22,8 +22,8 @@
       document.getElementById("vastus").value = tasuvus_h;
       document.getElementById("even_day").value = tasuvus_d;
       document.getElementById("even_year").value = tasuvus_y;
-      document.getElementById("even_burger_d").value = days_burger;
-      document.getElementById("even_burger_y").value = (Math.round((days_burger/365)*10))/10;
+      document.getElementById("even_burger_d").value = tasuvus_d + days_burger;
+      document.getElementById("even_burger_y").value = tasuvus_y + (Math.round((days_burger/365)*10))/10;
     }
   </script>
 
